@@ -32,7 +32,7 @@
 export default {
   name: "Success",
   mounted() {
-    document.title = "Success | Djackets";
+    document.title = "Success | VietShop";
   },
 };
 </script>
@@ -48,6 +48,7 @@ body {
   border-radius: 20px;
   background: #fff;
 }
+
 .payment_header {
   background: rgba(255, 102, 0, 1);
   padding: 20px;

@@ -7,10 +7,7 @@
         <h2 class="is-size-5 has-text-grey">Search term: "{{ query }}"</h2>
       </div>
 
-      <ProductBox
-          v-for="product in products"
-          v-bind:key="product.id"
-          v-bind:product="product"/>
+      <ProductBox v-for="product in products" v-bind:key="product.id" v-bind:product="product" />
     </div>
   </div>
 </template>
@@ -31,7 +28,7 @@ export default {
     }
   },
   mounted() {
-    document.title = 'Search | Djackets'
+    document.title = 'Search | VietShop'
 
     let uri = window.location.search.substring(1)
     let params = new URLSearchParams(uri)
@@ -45,7 +42,7 @@ export default {
     async getProducts() {
       this.$store.commit('setIsLoading', true)
 
-      axios.post('api/v1/product/search/', {'query': this.query}).then(response => {
+      axios.post('api/v1/product/search/', { 'query': this.query }).then(response => {
         this.products = response.data
       }).catch(error => console.log(error))
       this.$store.commit('setIsLoading', false)
@@ -55,5 +52,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

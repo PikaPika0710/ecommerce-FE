@@ -54,7 +54,7 @@ export default {
     };
   },
   mounted() {
-    document.title = "Login | Djackets";
+    document.title = "Login | VietShop";
   },
   methods: {
     async submitForm() {

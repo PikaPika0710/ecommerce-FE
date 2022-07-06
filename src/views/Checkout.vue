@@ -8,32 +8,29 @@
       <div class="column is-12 box">
         <table class="table is-fullwidth">
           <thead>
-          <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-          </tr>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
           </thead>
 
           <tbody>
-          <tr
-              v-for="item in cart.items"
-              v-bind:key="item.product.id"
-          >
-            <td>{{ item.product.name }}</td>
-            <td>${{ item.product.price }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>${{ getItemTotal(item).toFixed(2) }}</td>
-          </tr>
+            <tr v-for="item in cart.items" v-bind:key="item.product.id">
+              <td>{{ item.product.name }}</td>
+              <td>${{ item.product.price }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>${{ getItemTotal(item).toFixed(2) }}</td>
+            </tr>
           </tbody>
 
           <tfoot>
-          <tr>
-            <td colspan="2">Total</td>
-            <td>{{ cartTotalLength }}</td>
-            <td>${{ cartTotalPrice.toFixed(2) }}</td>
-          </tr>
+            <tr>
+              <td colspan="2">Total</td>
+              <td>{{ cartTotalLength }}</td>
+              <td>${{ cartTotalPrice.toFixed(2) }}</td>
+            </tr>
           </tfoot>
         </table>
       </div>
@@ -139,12 +136,12 @@ export default {
     }
   },
   mounted() {
-    document.title = 'Checkout | Djackets'
+    document.title = 'Checkout | VietShop'
     this.cart = this.$store.state.cart
     if (this.cartTotalLength > 0) {
       this.stripe = Stripe('pk_test_51LGGeMLqV01Kfs0vasrwhUPdh5hEsgbnyHkx9J4stqH18yTTBu0dineeLzsS97xgmRyaCApHkLPVc9HsOmOjHr0c00353y1lee')
       const elements = this.stripe.elements();
-      this.card = elements.create('card', {hidePostalCode: true})
+      this.card = elements.create('card', { hidePostalCode: true })
       this.card.mount('#card-element')
     }
   },
@@ -215,15 +212,15 @@ export default {
       // };
       // console.log(config.headers)
       await axios
-          .post('/api/v1/order/checkout/', data)
-          .then(response => {
-            this.$store.commit('clearCart')
-            this.$router.push('/cart/success')
-          })
-          .catch(error => {
-            this.errors.push('Something went wrong. Please try again')
-            console.log(error)
-          })
+        .post('/api/v1/order/checkout/', data)
+        .then(response => {
+          this.$store.commit('clearCart')
+          this.$router.push('/cart/success')
+        })
+        .catch(error => {
+          this.errors.push('Something went wrong. Please try again')
+          console.log(error)
+        })
       this.$store.commit('setIsLoading', false)
     }
   },
@@ -243,5 +240,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

@@ -3,11 +3,7 @@
     <div class="columns is-multiline">
       <div class="column is-12">
         <h2 class="title" v-show="orders.length">My orders</h2>
-        <OrderSummary
-          v-for="order in orders"
-          v-bind:key="order.id"
-          v-bind:order="order"
-        />
+        <OrderSummary v-for="order in orders" v-bind:key="order.id" v-bind:order="order" />
       </div>
       <hr />
       <div class="column is-12">
@@ -31,7 +27,7 @@ export default {
     };
   },
   mounted() {
-    document.title = "My account | Djackets";
+    document.title = "My account | VietShop";
     this.getMyOrders();
   },
   methods: {

@@ -12,11 +12,7 @@
       <div class="column is-12">
         <h2 class="is-size-2 has-text-centered">Latest products</h2>
       </div>
-      <ProductBox
-        v-for="product in latestProducts"
-        v-bind:key="product.id"
-        v-bind:product="product"
-      ></ProductBox>
+      <ProductBox v-for="product in latestProducts" v-bind:key="product.id" v-bind:product="product"></ProductBox>
     </div>
   </div>
 </template>
@@ -37,7 +33,7 @@ export default {
   mounted() {
     this.getLatestProducts();
 
-    document.title = "Home | Djackets";
+    document.title = "Home | VietShop";
   },
   methods: {
     async getLatestProducts() {

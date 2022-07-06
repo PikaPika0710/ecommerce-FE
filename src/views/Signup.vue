@@ -49,7 +49,7 @@
 
 <script>
 import axios from "axios";
-import {toast} from "bulma-toast";
+import { toast } from "bulma-toast";
 
 export default {
   name: "Signup",
@@ -61,8 +61,8 @@ export default {
       errors: [],
     }
   },
-  mounted(){
-    document.title = 'Sign Up | Djackets'
+  mounted() {
+    document.title = 'Sign Up | VietShop'
   },
   methods: {
     async submitForm() {
@@ -115,5 +115,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
