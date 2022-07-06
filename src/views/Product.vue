@@ -3,7 +3,7 @@
     <div class="columns is-multiline">
       <div class="column is-9">
         <figure class="image mb-6">
-          <img v-bind:src="product.get_image" alt="">
+          <img v-bind:src="product.get_image" alt="" />
         </figure>
 
         <h1 class="title">{{ product.name }}</h1>
@@ -18,7 +18,7 @@
 
         <div class="field has-addons mt-6">
           <div class="control">
-            <input type="number" class="input" min="1" v-model="quantity">
+            <input type="number" class="input" min="1" v-model="quantity" />
           </div>
 
           <div class="control">
@@ -30,55 +30,67 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
-import {toast} from 'bulma-toast'
+import axios from "axios";
+import { toast } from "bulma-toast";
 
 export default {
-  name: 'Product',
+  name: "Product",
   data() {
     return {
       product: {},
-      quantity: 1
-    }
+      quantity: 1,
+    };
   },
   mounted() {
-    this.getProduct()
+    this.getProduct();
   },
   methods: {
     async getProduct() {
-      this.$store.commit('setIsLoading', true)
-      const id = this.$route.params.id
+      this.$store.commit("setIsLoading", true);
+      const id = this.$route.params.id;
 
-      await axios.get(`/api/v1/product/${id}/`).then(response => {
-        this.product = response.data;
+      await axios
+        .get(`/api/v1/product/${id}/`)
+        .then((response) => {
+          this.product = response.data;
 
-        document.title = this.product.name + ' | Djackets'
-      })
-          .catch(error => console.log(error))
+          document.title = this.product.name + " | Djackets";
+        })
+        .catch((error) => console.log(error));
 
-      this.$store.commit('setIsLoading', false)
+      this.$store.commit("setIsLoading", false);
     },
     addToCart() {
       if (isNaN(this.quantity) || this.quantity < 1) {
-        this.quantity = 1
+        this.quantity = 1;
       }
-      const item = {
-        product: this.product,
-        quantity: this.quantity
+      if (!this.$store.state.isAuthenticated) {
+        toast({
+          message: "Please login before adding to cart!",
+          type: "is-danger",
+          dismissible: true,
+          pauseOnHover: true,
+          duration: 5000,
+          position: "bottom-right",
+        });
+      } else {
+        const item = {
+          product: this.product,
+          quantity: this.quantity,
+        };
+        this.$store.commit("addToCart", item);
+        toast({
+          message: "The product has been added to the cart",
+          type: "is-success",
+          dismissible: true,
+          pauseOnHover: true,
+          duration: 5000,
+          position: "bottom-right",
+        });
       }
-      this.$store.commit('addToCart', item)
-      toast({
-        message: "The product has been added to the cart",
-        type: "is-success",
-        dismissible: true,
-        pauseOnHover: true,
-        duration: 5000,
-        position: 'bottom-right'
-      })
-    }
-  }
-}
-
+    },
+  },
+};
 </script>
 <style scoped>
 img {

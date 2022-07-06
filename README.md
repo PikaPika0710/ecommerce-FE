@@ -27,3 +27,6 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Bulma-toast
+npm install bulma-toast => show a toast message for adding item to the cart

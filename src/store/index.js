@@ -1,4 +1,4 @@
-import {createStore} from 'vuex'
+import { createStore } from 'vuex'
 
 export default createStore({
     state: {
@@ -47,8 +47,8 @@ export default createStore({
             state.token = ''
             state.isAuthenticated = false
         },
-        clearCart(state){
-            state.cart = {items:[]}
+        clearCart(state) {
+            state.cart = { items: [] }
             localStorage.setItem('cart', JSON.stringify(state.cart))
         }
     },

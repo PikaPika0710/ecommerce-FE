@@ -2,11 +2,9 @@
   <div class="home">
     <section class="hero is-medium is-dark mb-6">
       <div class="hero-body has-text-centered">
-        <p class="title mb-6">
-          Welcome to Djacket
-        </p>
+        <p class="title mb-6">❤️ Welcome to VietShop ❤️</p>
         <p class="subtitle">
-          The best jacket store online
+          🤑 The best shopping online flatform. Let's enjoy! 🤑
         </p>
       </div>
     </section>
@@ -15,42 +13,45 @@
         <h2 class="is-size-2 has-text-centered">Latest products</h2>
       </div>
       <ProductBox
-          v-for="product in latestProducts" v-bind:key="product.id" v-bind:product="product"
+        v-for="product in latestProducts"
+        v-bind:key="product.id"
+        v-bind:product="product"
       ></ProductBox>
     </div>
   </div>
 </template>
 <script>
-import axios from 'axios'
-import ProductBox from '@/components/ProductBox'
+import axios from "axios";
+import ProductBox from "@/components/ProductBox";
 
 export default {
   name: "Home",
   data() {
     return {
-      latestProducts: []
-    }
+      latestProducts: [],
+    };
   },
   components: {
-    ProductBox
+    ProductBox,
   },
   mounted() {
-    this.getLatestProducts()
+    this.getLatestProducts();
 
-    document.title = 'Home | Djackets'
+    document.title = "Home | Djackets";
   },
   methods: {
     async getLatestProducts() {
-      this.$store.commit('setIsLoading', true)
+      this.$store.commit("setIsLoading", true);
 
-      await axios.get('/api/v1/product/')
-          .then(response => {
-            this.latestProducts = response.data;
-          })
-          .catch(error => console.error(error))
+      await axios
+        .get("/api/v1/product/")
+        .then((response) => {
+          this.latestProducts = response.data;
+        })
+        .catch((error) => console.error(error));
 
-      this.$store.commit('setIsLoading', false)
-    }
-  }
-}
+      this.$store.commit("setIsLoading", false);
+    },
+  },
+};
 </script>

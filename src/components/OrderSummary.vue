@@ -6,24 +6,23 @@
 
     <table class="table is-fullwidth">
       <thead>
-      <tr>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total</th>
-      </tr>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
       </thead>
 
       <tbody>
-      <tr
-          v-for="item in order.items"
-          v-bind:key="item.product.id"
-      >
-        <td>{{ item.product.name }}</td>
-        <td>${{ item.product.price }}</td>
-        <td>{{ item.quantity }}</td>
-        <td>${{ getItemTotal(item).toFixed(2) }}</td>
-      </tr>
+        <tr v-for="item in order.items" v-bind:key="item.product.id">
+          <a v-bind:href="'product/' + item.product.id"
+            ><td>{{ item.product.name }}</td></a
+          >
+          <td>${{ item.product.price }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>${{ getItemTotal(item).toFixed(2) }}</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -31,23 +30,22 @@
 
 <script>
 export default {
-  name: 'OrderSummary',
+  name: "OrderSummary",
   props: {
-    order: Object
+    order: Object,
   },
   methods: {
     getItemTotal(item) {
-      return item.quantity * item.product.price
+      return item.quantity * item.product.price;
     },
     orderTotalLength(order) {
       return order.items.reduce((acc, curVal) => {
-        return acc += curVal.quantity
-      }, 0)
+        return (acc += curVal.quantity);
+      }, 0);
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
