@@ -1,1 +1,1 @@
-web: gunicorn core.wsgi
+web:node index.js
