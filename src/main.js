@@ -6,5 +6,5 @@ import store from './store'
 
 // axios.defaults.baseURL = "http://localhost:8000"
 
-axios.defaults.baseURL = "https://vietdev-shop.herokuapp.com/"
+axios.defaults.baseURL = "https://vietdevshop-be.herokuapp.com/"
 createApp(App).use(store).use(router, axios).mount('#app')
