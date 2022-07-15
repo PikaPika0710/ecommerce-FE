@@ -20,7 +20,7 @@
           <div class="content">
             <h1>Payment Success !</h1>
             <p>Your order will be processed within 48 hours.</p>
-            <a href="../..">Go to Home</a>
+            <router-link to="/">Go to Home</router-link>
           </div>
         </div>
       </div>

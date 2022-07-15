@@ -16,9 +16,9 @@
 
       <tbody>
         <tr v-for="item in order.items" v-bind:key="item.product.id">
-          <a v-bind:href="'product/' + item.product.id"
-            ><td>{{ item.product.name }}</td></a
-          >
+          <router-link to="'/product/' + item.product.id">
+            <td>{{ item.product.name }}</td>
+          </router-link>
           <td>${{ item.product.price }}</td>
           <td>{{ item.quantity }}</td>
           <td>${{ getItemTotal(item).toFixed(2) }}</td>

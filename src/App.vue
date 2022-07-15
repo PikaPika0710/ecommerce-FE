@@ -38,17 +38,18 @@
           </div>
           <div class="navbar-item">
             <div class="buttons">
-              <template v-if="$store.state.isAuthenticated">
-                <router-link to="/my-account" class="button is-light">My account</router-link>
-              </template>
-
-              <template v-else>
-                <router-link to="/login" class="button is-light">Log in</router-link>
-              </template>
-              <router-link to="/cart" class="button is-success">
+              <router-link to="/cart" class="button is-success is-rounded">
                 <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                 <span> Cart ({{ cartTotalLength }})</span>
               </router-link>
+
+              <template v-if="$store.state.isAuthenticated">
+                <router-link to="/my-account" class="button is-rounded is-danger">Account</router-link>
+              </template>
+
+              <template v-else>
+                <router-link to="/login" class="button is-rounded is-light">Log in</router-link>
+              </template>
             </div>
           </div>
         </div>
