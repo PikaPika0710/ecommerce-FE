@@ -1,5 +1,5 @@
 {
-    "name": "e-commerce-website",
+    "name": "vietshop",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -7,14 +7,6 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
-    },
-    "watch": {
-        "build": {
-            "patterns": [
-                "src"
-            ],
-            "extensions": "js,jsx"
-        }
     },
     "dependencies": {
         "axios": "^0.27.2",
