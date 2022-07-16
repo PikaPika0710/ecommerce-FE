@@ -76,11 +76,12 @@ export default {
           .post("api/v1/account/login/", formData)
           .then((response) => {
             const token = response.data.access_token;
-            console.log("Token: ", token);
+            const user_id = response.data.user_id;
             this.$store.commit("setToken", token);
+            this.$store.commit("setUserId", user_id);
             axios.defaults.headers.common["Authorization"] = "Bearer " + token;
             localStorage.setItem("token", token);
-
+            localStorage.setItem("user_id", user_id);
             const toPath = this.$route.query.to || "/cart";
             this.$router.push(toPath);
 

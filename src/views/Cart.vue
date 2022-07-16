@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="alert" v-else>
-      You must login before shopping ^^. Let's enjoy!
+      You must login before shopping. Let's enjoy!
     </div>
   </div>
 </template>

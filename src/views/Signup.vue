@@ -84,7 +84,6 @@ export default {
           username: this.username,
           password: this.password
         }
-        //await axios.post('api/v1/account/sign_up/', formData).then(response => {
 
         await axios.post('api/v1/account/sign_up/', formData).then(response => {
           toast({

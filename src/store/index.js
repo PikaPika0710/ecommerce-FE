@@ -7,7 +7,8 @@ export default createStore({
         },
         isAuthenticated: false,
         token: '',
-        isLoading: false
+        isLoading: false,
+        user_id: '',
     },
     mutations: {
         initializeStore(state) {
@@ -26,6 +27,12 @@ export default createStore({
                 state.token = ''
                 state.isAuthenticated = false
             }
+
+            if (localStorage.getItem('user_id')) {
+                state.user_id = localStorage.getItem('user_id')
+            } else {
+                state.user_id = ''
+            }
         },
         addToCart(state, item) {
             const exists = state.cart.items.filter(i => i.product.id === item.product.id)
@@ -39,18 +46,26 @@ export default createStore({
         setIsLoading(state, status) {
             state.isLoading = status
         },
-        setToken(state, token) {
+        setToken(state, token, value) {
             state.token = token
             state.isAuthenticated = true
+
         },
         removeToken(state) {
             state.token = ''
             state.isAuthenticated = false
+
         },
         clearCart(state) {
             state.cart = { items: [] }
             localStorage.setItem('cart', JSON.stringify(state.cart))
-        }
+        },
+        setUserId(state, value) {
+            state.user_id = value
+        },
+        // removeUserId(state) {
+        //     state.user_id = ''
+        // }
     },
     actions: {},
     modules: {}

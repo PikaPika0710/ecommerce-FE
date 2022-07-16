@@ -3,9 +3,18 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
+        "watch": "vue-cli-service build --watch",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
+    },
+    "watch": {
+        "build": {
+            "patterns": [
+                "src"
+            ],
+            "extensions": "js,jsx"
+        }
     },
     "dependencies": {
         "axios": "^0.27.2",
@@ -34,7 +43,8 @@
         "eslint": "^7.32.0",
         "eslint-plugin-vue": "^8.0.3",
         "jquery": "^3.6.0",
-        "popper.js": "^1.16.1"
+        "popper.js": "^1.16.1",
+        "webpack-cli": "^4.10.0"
     },
     "eslintConfig": {
         "root": true,
@@ -55,5 +65,8 @@
         "last 2 versions",
         "not dead",
         "not ie 11"
-    ]
+    ],
+    "overrides": {
+        "autoprefixer": "10.4.5"
+    }
 }
