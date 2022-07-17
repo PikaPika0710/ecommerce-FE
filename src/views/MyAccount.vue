@@ -51,7 +51,7 @@
                 placeholder="Birthday" v-model="user.birthday"></div>
           </div>
           <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-              @click="save_profile()" v-show="change">Save
+              @click="save_profile()" :disabled="change">Save
               Profile</button></div>
         </div>
       </div>
@@ -74,7 +74,7 @@ export default {
   data() {
     return {
       user: {},
-      change: false,
+      change: true,
       user_id: '',
     }
   },

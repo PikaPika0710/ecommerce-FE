@@ -4,7 +4,7 @@
       <div class="hero-body has-text-centered">
         <p class="title mb-6">❤️ Welcome to VietShop ❤️</p>
         <p class="subtitle">
-          🤑 The best shopping online flatform. Let's enjoy! 🤑
+          🤑 The best shopping online platform. Let's enjoy! 🤑
         </p>
       </div>
     </section>
