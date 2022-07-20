@@ -24,14 +24,6 @@ export default {
         this.getMyOrders();
     },
     methods: {
-        logout() {
-            axios.defaults.headers.common["Authorization"] = "";
-            localStorage.removeItem("token");
-            localStorage.removeItem("username");
-            localStorage.removeItem("userid");
-            this.$store.commit("removeToken");
-            this.$router.push("/");
-        },
         async getMyOrders() {
             this.$store.commit("setIsLoading", true);
             await axios
